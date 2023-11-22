@@ -1,5 +1,4 @@
 // TODO: Save tip percentage to persistent storage.
-// TODO: Disable rotation.
 // TODO: Implement version for Watch and iPad.
 // TODO: Refactor to extract widgets, buttons in particular.
 // TODO: Play button sounds on touch down.
