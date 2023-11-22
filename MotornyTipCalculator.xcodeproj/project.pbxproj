@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B46AC7B02B0DBE6400966C9F /* MotornyTipCalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46AC7AF2B0DBE6400966C9F /* MotornyTipCalculatorApp.swift */; };
-		B46AC7B22B0DBE6400966C9F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46AC7B12B0DBE6400966C9F /* ContentView.swift */; };
 		B46AC7B42B0DBE6600966C9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B46AC7B32B0DBE6600966C9F /* Assets.xcassets */; };
 		B46AC7B72B0DBE6600966C9F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B46AC7B62B0DBE6600966C9F /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -16,7 +15,6 @@
 /* Begin PBXFileReference section */
 		B46AC7AC2B0DBE6400966C9F /* MotornyTipCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MotornyTipCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B46AC7AF2B0DBE6400966C9F /* MotornyTipCalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotornyTipCalculatorApp.swift; sourceTree = "<group>"; };
-		B46AC7B12B0DBE6400966C9F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B46AC7B32B0DBE6600966C9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B46AC7B62B0DBE6600966C9F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -52,7 +50,6 @@
 			isa = PBXGroup;
 			children = (
 				B46AC7AF2B0DBE6400966C9F /* MotornyTipCalculatorApp.swift */,
-				B46AC7B12B0DBE6400966C9F /* ContentView.swift */,
 				B46AC7B32B0DBE6600966C9F /* Assets.xcassets */,
 				B46AC7B52B0DBE6600966C9F /* Preview Content */,
 			);
@@ -137,7 +134,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B46AC7B22B0DBE6400966C9F /* ContentView.swift in Sources */,
 				B46AC7B02B0DBE6400966C9F /* MotornyTipCalculatorApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
