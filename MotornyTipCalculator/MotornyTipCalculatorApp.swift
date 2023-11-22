@@ -1,4 +1,3 @@
-// TODO: Ensure light theme looks good.
 // TODO: Save tip percentage to persistent storage.
 // TODO: Disable rotation.
 // TODO: Implement version for Watch and iPad.
@@ -56,7 +55,7 @@ struct MotornyTipCalculatorApp: App {
                         .padding(5)
                         .overlay(
                             RoundedRectangle(cornerRadius: 5)
-                                .stroke(Color.blue, lineWidth: 1)
+                                .stroke(Color(UIColor.tintColor), lineWidth: 1)
                         )
                         .textSelection(.enabled)
                 }
@@ -94,8 +93,7 @@ struct MotornyTipCalculatorApp: App {
                                 Text(button)
                                     .font(.largeTitle)
                                     .frame(maxWidth: .infinity, maxHeight: 48)
-                                    .foregroundColor(.white)
-                                    .background(Int(button) == nil ? .clear : .gray)
+                                    .background(Int(button) == nil ? .clear : Color(UIColor.systemFill))
                                     .cornerRadius(5)
                                     .onTapGesture() {
                                         if let digit = Double(button) {
@@ -119,7 +117,7 @@ struct MotornyTipCalculatorApp: App {
                     }
                 }
                 .padding(6)
-                .background(.gray.opacity(0.5))
+                .background(Color(UIColor.secondarySystemBackground))
             }
         }
     }
