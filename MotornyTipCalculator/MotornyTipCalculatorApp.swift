@@ -1,11 +1,11 @@
-// TODO: Add translations.
 // TODO: Ensure light theme looks good.
-// TODO: Ensure non-US locales look good.
 // TODO: Save tip percentage to persistent storage.
 // TODO: Disable rotation.
 // TODO: Implement version for Watch and iPad.
 // TODO: Refactor to extract widgets, buttons in particular.
+// TODO: Play button sounds on touch down.
 
+import AudioToolbox
 import SwiftUI
 
 func formatCurrency(_ value: Double) -> String {
@@ -25,6 +25,9 @@ func formatPercent(_ value: Double) -> String {
     formatter.numberStyle = .percent
     return formatter.string(from: NSNumber(floatLiteral: value)) ?? formatPercent(0)
 }
+
+let numberSoundID: SystemSoundID = 1104;
+let deleteSoundID: SystemSoundID = 1155;
 
 @main
 struct MotornyTipCalculatorApp: App {
@@ -62,7 +65,7 @@ struct MotornyTipCalculatorApp: App {
                     Text("Tip")
                         .font(.headline)
                         .foregroundStyle(.secondary)
-                    Picker("", selection: $tipIndex) {
+                    Picker("Tip", selection: $tipIndex) {
                         ForEach(1..<51) { percent in
                             let percent = Double(percent) / 100
                             Text("\(formatPercent(percent)) = \(formatCurrency(parseCurrency(amount) * percent))")
@@ -84,28 +87,29 @@ struct MotornyTipCalculatorApp: App {
                 }
                 .padding()
                 Spacer()
-                VStack {
+                VStack(spacing: 6) {
                     ForEach(buttons, id: \.self) { row in
-                        HStack {
+                        HStack(spacing: 6) {
                             ForEach(row, id: \.self) { button in
                                 Text(button)
                                     .font(.largeTitle)
-                                    .frame(maxWidth: .infinity, maxHeight: 50)
+                                    .frame(maxWidth: .infinity, maxHeight: 48)
                                     .foregroundColor(.white)
                                     .background(Int(button) == nil ? .clear : .gray)
                                     .cornerRadius(5)
                                     .onTapGesture() {
-                                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
                                         if let digit = Double(button) {
+                                            AudioServicesPlaySystemSound(numberSoundID)
                                             amount = formatCurrency(parseCurrency(amount) * 10 + digit / 100)
                                         } else {
+                                            AudioServicesPlaySystemSound(deleteSoundID)
                                             amount = formatCurrency(floor(parseCurrency(amount) * 10) / 100)
                                         }
                                         updateTotal()
                                     }
                                     .onLongPressGesture() {
                                         if Double(button) == nil {
-                                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                                            AudioServicesPlaySystemSound(deleteSoundID)
                                             amount = formatCurrency(0)
                                             updateTotal()
                                         }
@@ -114,7 +118,7 @@ struct MotornyTipCalculatorApp: App {
                         }
                     }
                 }
-                .padding(5)
+                .padding(6)
                 .background(.gray.opacity(0.5))
             }
         }
