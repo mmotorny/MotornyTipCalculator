@@ -19,22 +19,20 @@ func formatPercent(_ value: Double) -> String {
     return formatter.string(from: NSNumber(floatLiteral: value)) ?? formatPercent(0)
 }
 
-let numberSoundID: SystemSoundID = 1104;
-let deleteSoundID: SystemSoundID = 1155;
-
-
 struct ContentView: View {
-    @State private var amount: String = formatCurrency(0)
-    @State private var isCursorVisible = true
-    @State private var total: String = formatCurrency(0)
+    @State private var beforeTip: String = formatCurrency(0)
+    @State private var afterTip: String = formatCurrency(0)
     @State private var tipIndex = UserDefaults.standard.object(forKey: "tipIndex") as? Int ?? 19
     
-    let buttons = [
+    private static let buttons = [
         ["1", "2", "3"],
         ["4", "5", "6"],
         ["7", "8", "9"],
         ["", "0", "⌫"]
     ]
+    
+    private static let numberSoundID: SystemSoundID = 1104;
+    private static let deleteSoundID: SystemSoundID = 1155;
     
     var body: some View {
         VStack {
@@ -43,7 +41,7 @@ struct ContentView: View {
                 Text("Before tip")
                     .font(.headline)
                     .foregroundStyle(.secondary)
-                Text(amount)
+                Text(beforeTip)
                     .font(.largeTitle)
                     .padding(5)
                     .overlay(
@@ -60,13 +58,13 @@ struct ContentView: View {
                 Picker("Tip", selection: $tipIndex) {
                     ForEach(1..<51) { percent in
                         let percent = Double(percent) / 100
-                        Text("\(formatPercent(percent)) = \(formatCurrency(parseCurrency(amount) * percent))")
+                        Text("\(formatPercent(percent)) = \(formatCurrency(parseCurrency(beforeTip) * percent))")
                     }
                 }
                 .pickerStyle(.wheel)
                 .onChange(of: tipIndex) {
                     updateTotal()
-
+                    
                     let savedTipIndex: Int? = tipIndex;
                     UserDefaults.standard.set(savedTipIndex, forKey: "tipIndex")
                 }
@@ -76,14 +74,14 @@ struct ContentView: View {
                 Text("After tip")
                     .font(.headline)
                     .foregroundStyle(.secondary)
-                Text(total)
+                Text(afterTip)
                     .font(.largeTitle)
                     .textSelection(.enabled)
             }
             .padding()
             Spacer()
             VStack(spacing: 6) {
-                ForEach(buttons, id: \.self) { row in
+                ForEach(ContentView.buttons, id: \.self) { row in
                     HStack(spacing: 6) {
                         ForEach(row, id: \.self) { button in
                             Text(button)
@@ -93,18 +91,18 @@ struct ContentView: View {
                                 .cornerRadius(5)
                                 .onTapGesture() {
                                     if let digit = Double(button) {
-                                        AudioServicesPlaySystemSound(numberSoundID)
-                                        amount = formatCurrency(parseCurrency(amount) * 10 + digit / 100)
+                                        AudioServicesPlaySystemSound(ContentView.numberSoundID)
+                                        beforeTip = formatCurrency(parseCurrency(beforeTip) * 10 + digit / 100)
                                     } else {
-                                        AudioServicesPlaySystemSound(deleteSoundID)
-                                        amount = formatCurrency(floor(parseCurrency(amount) * 10) / 100)
+                                        AudioServicesPlaySystemSound(ContentView.deleteSoundID)
+                                        beforeTip = formatCurrency(floor(parseCurrency(beforeTip) * 10) / 100)
                                     }
                                     updateTotal()
                                 }
                                 .onLongPressGesture() {
                                     if Double(button) == nil {
-                                        AudioServicesPlaySystemSound(deleteSoundID)
-                                        amount = formatCurrency(0)
+                                        AudioServicesPlaySystemSound(ContentView.deleteSoundID)
+                                        beforeTip = formatCurrency(0)
                                         updateTotal()
                                     }
                                 }
@@ -118,7 +116,7 @@ struct ContentView: View {
     }
     
     private func updateTotal() {
-        total = formatCurrency(parseCurrency(amount) * (1 + Double(tipIndex + 1) / 100))
+        afterTip = formatCurrency(parseCurrency(beforeTip) * (1 + Double(tipIndex + 1) / 100))
     }
 }
 

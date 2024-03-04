@@ -12,6 +12,7 @@
 		B46AC7B72B0DBE6600966C9F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B46AC7B62B0DBE6600966C9F /* Preview Assets.xcassets */; };
 		B46AC7BE2B0DD31B00966C9F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B46AC7BD2B0DD31B00966C9F /* Localizable.xcstrings */; };
 		B4A151B22B0DF0E6004690FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A151B12B0DF0E6004690FD /* ContentView.swift */; };
+		B4A151B72B0E16F0004690FD /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B4A151B62B0E16F0004690FD /* InfoPlist.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,8 @@
 		B46AC7B62B0DBE6600966C9F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B46AC7BD2B0DD31B00966C9F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		B4A151B12B0DF0E6004690FD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B4A151B32B0E1281004690FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B4A151B62B0E16F0004690FD /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,9 +56,11 @@
 		B46AC7AE2B0DBE6400966C9F /* MotornyTipCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				B4A151B32B0E1281004690FD /* Info.plist */,
 				B4A151B12B0DF0E6004690FD /* ContentView.swift */,
 				B46AC7AF2B0DBE6400966C9F /* MotornyTipCalculatorApp.swift */,
 				B46AC7B32B0DBE6600966C9F /* Assets.xcassets */,
+				B4A151B62B0E16F0004690FD /* InfoPlist.xcstrings */,
 				B46AC7BD2B0DD31B00966C9F /* Localizable.xcstrings */,
 				B46AC7B52B0DBE6600966C9F /* Preview Content */,
 			);
@@ -132,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B46AC7B72B0DBE6600966C9F /* Preview Assets.xcassets in Resources */,
+				B4A151B72B0E16F0004690FD /* InfoPlist.xcstrings in Resources */,
 				B46AC7B42B0DBE6600966C9F /* Assets.xcassets in Resources */,
 				B46AC7BE2B0DD31B00966C9F /* Localizable.xcstrings in Resources */,
 			);
@@ -282,6 +288,8 @@
 				DEVELOPMENT_TEAM = YM754U9JU2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MotornyTipCalculator/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -292,7 +300,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.motorny.MotornyTipCalculator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.motorny.tips;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -314,6 +322,8 @@
 				DEVELOPMENT_TEAM = YM754U9JU2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MotornyTipCalculator/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -324,7 +334,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.motorny.MotornyTipCalculator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.motorny.tips;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
